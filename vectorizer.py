@@ -1,7 +1,7 @@
 from sentence_transformers import SentenceTransformer
 import numpy
 
-def chunking(text: str, chunk_size: int, overlap: int) -> list[str]:
+def chunking(text: str, chunk_size: int = 500, overlap: int = 100) -> list[str]:
     
     chunks = list()
     
@@ -22,7 +22,7 @@ def chunking(text: str, chunk_size: int, overlap: int) -> list[str]:
     return chunks
 #
 
-def vectorize(texts: list[str]) -> numpy.ndarray:
+def vectorize(texts: list[str], expand: bool = False) -> numpy.ndarray:
     
     model = SentenceTransformer("intfloat/multilingual-e5-base")
     
@@ -32,5 +32,5 @@ def vectorize(texts: list[str]) -> numpy.ndarray:
         normalize_embeddings = True
     )
     
-    return embeddings
+    return numpy.expand_dims(embeddings, 0) if expand else embeddings
 #

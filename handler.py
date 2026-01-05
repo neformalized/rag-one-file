@@ -1,4 +1,4 @@
-import vectorizer, index, llm
+import vectorizer, index, llm, retriever
 
 # Document prepare
 
@@ -14,25 +14,16 @@ document_index = index.build(document_embedding)
 # Query prepare
 
 query_origin = "ожидаемые результаты"
-query_embedding = vectorizer.vectorize(query_origin)
+#query_embedding = vectorizer.vectorize(query_origin, True)
+
+subquery_embedding = [vectorizer.vectorize(subquery, True) for subquery in llm.generate_search_queries(query_origin)]
 
 # Search
 
-results = index.search(document_index, document_chunks, query_embedding, 2)
+#results = index.search(document_index, document_chunks, query_embedding, 2)
 
-# Results
+results = retriever.dedup_multiquery([index.search(document_index, document_chunks, query_embedding, 2) for query_embedding in subquery_embedding])
 
-tmp = list()
+# Join results
 
-for result in results:
-    
-    for key in result.keys():
-        
-        #print(f"{key}:{result[key]}")
-        if isinstance(result[key], str): tmp.append(result[key])
-    #
-#
-
-#
-
-print(llm.generate_answer(query_origin, tmp))
+print(llm.generate_answer(query_origin, results))
