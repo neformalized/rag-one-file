@@ -1,4 +1,4 @@
-def dedup_multiquery(bundle_of_chunks: list[list[dict]]) -> list[str]:
+def dedup(bundle_of_chunks: list[list[dict]]) -> list[str]:
     
     seen = list()
     results = list()
