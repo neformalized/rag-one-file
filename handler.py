@@ -20,13 +20,3 @@ class RAG:
         return response
     #
 #
-
-#"""
-with open("C:\\Users\\omni\\desktop\\document.txt", "r", encoding="utf-8") as file:
-    store = RAG(file.read())
-#
-
-result = store.query("ожидаемые результаты", 3, 5)
-
-print(result)
-#"""
