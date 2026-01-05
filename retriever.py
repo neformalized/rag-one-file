@@ -1,7 +1,6 @@
 def dedup(bundle_of_chunks: list[list[dict]]) -> list[str]:
     
-    seen = list()
-    results = list()
+    results = dict()
     
     #
     
@@ -9,13 +8,12 @@ def dedup(bundle_of_chunks: list[list[dict]]) -> list[str]:
         
         for chunk in chunks:
             
-            if chunk["idx"] not in seen:
+            if chunk["idx"] not in results.keys():
                 
-                results.append(chunk["text"])
-                seen.append(chunk["idx"])
+                results[chunk["idx"]] = chunk["text"]
             #
         #
     #
     
-    return results
+    return [results[idx] for idx in results.keys().sort()]
 #
