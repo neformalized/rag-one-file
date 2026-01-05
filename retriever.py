@@ -15,5 +15,5 @@ def dedup(bundle_of_chunks: list[list[dict]]) -> list[str]:
         #
     #
     
-    return [results[idx] for idx in results.keys().sort()]
+    return [results[idx] for idx in sorted(results.keys())]
 #

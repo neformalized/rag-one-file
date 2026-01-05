@@ -21,9 +21,12 @@ class RAG:
     #
 #
 
-"""
+#"""
 with open("C:\\Users\\omni\\desktop\\document.txt", "r", encoding="utf-8") as file:
-    store = RAG(document.read())
+    store = RAG(file.read())
 #
-result = store.query("ожидаемые результаты"))
-"""
+
+result = store.query("ожидаемые результаты", 3, 5)
+
+print(result)
+#"""
