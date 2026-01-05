@@ -1,4 +1,4 @@
-import vectorizer, index
+import vectorizer, index, llm
 
 # Document prepare
 
@@ -13,22 +13,26 @@ document_index = index.build(document_embedding)
 
 # Query prepare
 
-query = vectorizer.vectorize("ожидаемые результаты")
+query_origin = "ожидаемые результаты"
+query_embedding = vectorizer.vectorize(query_origin)
 
 # Search
 
-results = index.search(document_index, document_chunks, query, 2)
+results = index.search(document_index, document_chunks, query_embedding, 2)
 
 # Results
 
-
+tmp = list()
 
 for result in results:
     
     for key in result.keys():
         
-        print(f"{key}:{result[key]}")
+        #print(f"{key}:{result[key]}")
+        if isinstance(result[key], str): tmp.append(result[key])
     #
-    
-    print("")
 #
+
+#
+
+print(llm.generate_answer(query_origin, tmp))
