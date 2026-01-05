@@ -11,13 +11,11 @@ class RAG:
     
     def query(self, query: str, top_k: int = 2, enhance: int = 5) -> str:
         
-        query_origin = query
-        
-        queries_embedding = [vectorizer.vectorize(subquery, True) for subquery in llm.generate_search_queries(query_origin, enhance)] if enhance > 0 else vectorizer.vectorize(query_origin, True)
+        queries_embedding = [vectorizer.vectorize(subquery, True) for subquery in llm.generate_search_queries(query, enhance)] if enhance > 0 else vectorizer.vectorize(query, True)
         
         results = retriever.dedup([index.search(self.document_index, self.document_chunks, query_embedding, top_k) for query_embedding in queries_embedding])
         
-        response = llm.generate_answer(query_origin, results)
+        response = llm.generate_answer(query, results)
         
         return response
     #
