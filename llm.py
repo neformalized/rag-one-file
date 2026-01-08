@@ -5,8 +5,6 @@ import json
 
 client = OpenAI()
 
-#
-
 def request_to_openai(context: list[dict]) -> str:
     
     request = client.responses.create(
