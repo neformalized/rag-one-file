@@ -1,6 +1,6 @@
-def dedup(bundle_of_chunks: list[list[dict]]) -> list[str]:
+def dedup(bundle_of_chunks: list[list[dict]]) -> list[dict]:
     
-    results = dict()
+    results, results_sorted = dict(), dict()
     
     #
     
@@ -15,5 +15,10 @@ def dedup(bundle_of_chunks: list[list[dict]]) -> list[str]:
         #
     #
     
-    return [results[idx] for idx in sorted(results.keys())]
+    for key in sorted(results):
+        
+        results_sorted[key] = results[key]
+    #
+    
+    return results_sorted
 #
