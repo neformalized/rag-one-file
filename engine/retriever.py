@@ -22,3 +22,8 @@ def dedup(bundle_of_chunks: list[list[dict]]) -> list[dict]:
     
     return results_sorted
 #
+
+def strip(raw_chunks: list[dict]) -> list[str]:
+    
+    return [raw_chunks[key] for key in raw_chunks.keys()]
+#

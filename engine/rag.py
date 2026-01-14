@@ -1,4 +1,4 @@
-import vectorizer, index, llm, retriever
+from engine import vectorizer, index, llm, retriever
 
 class RAG:
     
@@ -21,11 +21,10 @@ class RAG:
         
         #
         
-        if strip: return "\n".join(result)
+        results = retriever.strip(results)
         
         #
         
-        return llm.generate_answer(query, results)
-        
+        return "\n".join(result) if strip else llm.generate_answer(query, results)
     #
 #

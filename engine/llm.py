@@ -21,7 +21,7 @@ def generate_search_queries(user_query: str, max_queries: int = 3) -> list[str]:
     
     context = list()
     
-    with open("prompts/search_queries.txt", "r", encoding = "utf-8") as file:
+    with open("engine/prompts/search_queries.txt", "r", encoding = "utf-8") as file:
         
         context.append({"role": "system", "content": file.read().format(max_queries=max_queries)})
     #
@@ -37,7 +37,7 @@ def generate_answer(user_query: str, content: list[str]) -> str:
     
     context = list()
     
-    with open("prompts/answer_synth.txt", "r", encoding = "utf-8") as file:
+    with open("engine/prompts/answer_synth.txt", "r", encoding = "utf-8") as file:
         
         context.append({"role": "system", "content": file.read().format(user_query=user_query)})
     #

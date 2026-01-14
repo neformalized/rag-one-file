@@ -1,9 +1,10 @@
-from handler import RAG
-import asyncio
+from engine import rag
 
-with open("C:\\Users\\omni\\Desktop\\document.txt", "r", encoding = "utf-8") as file:
+with open("C:\\Users\\omni\\Desktop\\document.txt", "r", encoding = "utf-8") as f:
     
-    ragged_doc = RAG(file.read())
+    doc = f.read()
+    
+    store = rag.RAG(doc)
 #
 
-print(ragged_doc.query("Ожидания от внедрения ии", top_k = 3, enhance = 5))
+print(store.query("Ожидания от искуственного интеллекта", top_k = 3, enhance = 5))
