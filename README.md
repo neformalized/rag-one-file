@@ -7,7 +7,7 @@ QA, summary, quote search, analysis, hybrid search, etc.
 ## Quick start
 
 ```python
-from handler import RAG
+from rag import RAG
 
 with open("path_to_your_document.txt", "r", encoding="utf-8") as file:
     store = RAG(
