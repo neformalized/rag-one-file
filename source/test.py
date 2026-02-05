@@ -7,4 +7,4 @@ with open("C:\\Users\\omni\\Desktop\\document.txt", "r", encoding = "utf-8") as 
     store = RAG(doc)
 #
 
-print(store.query("Ожидания от искуственного интеллекта", top_k = 3, enhance = 5))
+print(store.query("Очікування від ШІ", top_k = 3, enhance = 5))
