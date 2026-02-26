@@ -20,7 +20,7 @@ with open("path_to_your_document.txt", "r", encoding="utf-8") as file:
 
 result = store.query(
     query="question about document", # your query
-    top_k=3, # sensevity
+    top_k=3, # sensitivity
     enhance=5 # rewrite your query to queries adopted to RAG mechanism
 )
 ```
