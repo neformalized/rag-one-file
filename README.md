@@ -1,6 +1,6 @@
 # RAG Engine
 
-A minimal RAG engine with a clear division of responsibilities.
+A minimal RAG mechanism with a clear division of responsibilities.
 The project is designed as a skeleton, easily expandable with scripts:
 QA, summary, quote search, analysis, hybrid search, etc.
 
